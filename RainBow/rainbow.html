@@ -1,0 +1,46 @@
+<html>
+<link rel="stylesheet" href="rainbow.css">
+
+<body style="text-align: center; margin:auto;"> 
+
+    <h1>The Rainbow show .... whoaa!!</h1>
+
+    <label for="seasonPicker">Select the Season</label>
+    <select name="seasonPicker" id="seasonid">
+        <option value="Summer">Summer</option>
+        <option value="Winter">Winter</option>
+        <option value="Spring">Spring</option>
+    </select>
+    <br><br>
+    <label for="timezone">Select the timezone</label>
+    <select name="timezone" id="timezone">
+        <option value="Morning">Morning</option>
+        <option value="Noon">Noon</option>
+        <option value="Evening">Evening</option>
+    </select>
+    <br><br>
+
+    <label for="appt">Select a time:</label>
+    <input type="time" id="appt" name="appt">
+    <br><br>
+    <button type="submit" onclick="myFun()">Submit</button>
+    
+
+    <br><br><br><br><br><br><br><br>
+    <div style="text-align: center;">
+        <svg id="TotalDiv" width="500" height="220" style= "margin-left:8rem " >
+            <circle id="first" cx="200" cy="250" r="200" stroke="none" stroke-width="2" fill="aqua" />
+            <circle id="second" cx="200" cy="250" r="175" stroke="none" stroke-width="2" fill="red" />
+    
+            <!-- r defines the radius of the circle  -->
+            <circle id="third" cx="200" cy="250" r="150" stroke="none" stroke-width="2" fill="yellow" />
+            <circle id="fourth" cx="200" cy="250" r="125" stroke="none" stroke-width="2" fill="green" />
+            <circle id="fifth" cx="200" cy="250" r="100" stroke="none" stroke-width="2" fill="blue" />
+            <circle id="sixth" cx="200" cy="250" r="75" stroke="none" stroke-width="2" fill="indigo" />
+            <circle id="seventh" cx="200" cy="250" r="50" stroke="none" stroke-width="2" fill="violet" />
+        </svg>
+    </div>
+</body>
+<script src="rainbow.js"></script>
+
+</html>

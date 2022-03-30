@@ -1,0 +1,49 @@
+<html>
+    <body>
+        <h1>Online movie Search</h1>
+
+        <div id="searchbox">
+            <input type="text" id="search"/>
+        </div>
+        <button id="enter" onclick='myFun()'>Enter</button>
+        <!-- <div id="imgOfmovie"></div>
+        <img id="im" src="" alt="">
+        <div id="details"> </div> -->
+        <div id="main">
+            
+        </div>
+
+    </body>
+    
+    <script>
+        let resultInJson;
+        const detailsBox = document.getElementById('details');
+        const imgOfmovie = document.getElementById('imgOfmovie');
+        const im= document.getElementById('im');
+        const myFun = async() => {
+            const movieName = document.getElementById('search').value;
+            console.log(movieName);
+            const url = `https://www.omdbapi.com/?s=`+ movieName +`&apikey=fc0d2638`;
+            const result = await fetch(url);
+            resultInJson = await result.json();
+            //imgOfmovie.innerHTML = resultInJson.Poster;
+            //im.src=resultInJson.Poster;
+            
+            //console.log(detailsBox.innerHTML);
+            var main = document.getElementById('main');
+            console.log(resultInJson.Search);
+            for(x of resultInJson.Search){
+                main.innerHTML += `
+                <h1>Title : ${x.Title}</h1>
+            <img src="${x.Poster}" alt="title">
+            <p>${x.imdbID}</p>
+            <p>${x.Type}</p>
+            <p>${x.Year}</p>
+                `;
+            }
+            console.log(main.innerHTML);
+        }
+        
+        
+    </script>
+</html>

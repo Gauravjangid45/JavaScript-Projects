@@ -1,0 +1,87 @@
+<html>
+
+<body>
+    <div class="container">
+        userspeed : <input type="number" id="userspeed">
+        usertime : <input type="number" id="usertime">
+        <p>Seconds : </p><span type="number" id="seconds">00
+        </span><br>
+        <p>speed : </p><span type="number" id="speed">00
+        </span><br>
+        <p>distance : </p><span type="number" id="distance">00
+        </span><br>
+        <button id="start">Start</button>
+        <tr></tr>
+        <button id="stop">Stop</button>
+        <button id="resetbtn" onclick="resetFn()">Reset</button>
+    </div>
+</body>
+
+<script>
+    var secondsId = document.getElementById('seconds');
+    var userspeed = document.getElementById('userspeed');
+    var resetId = document.getElementById('resetbtn');
+
+    var usertime = document.getElementById('usertime');
+    var speedId = document.getElementById('speed');
+    var distanceId = document.getElementById('distance');
+    var start = document.getElementById('start');
+    var stop = document.getElementById('stop');
+    var seconds = 1;
+    var speed = 0;
+    var distance = 0;
+    var completelyStopped = false;
+    var isRunning = false;
+    start.addEventListener('click', function () {
+        var v1 = userspeed.value;
+        //  console.log(typeof(v1));
+        var v2 = usertime.value;
+        if (v1 == '' || v2 == '') {
+            alert("enter time and speed correctly.");
+        }
+        else {
+            if (isRunning == false && speed == 00) {
+                isRunning = true;
+                startInterval = setInterval(() => {
+                    if (seconds % Number(v2) == 0) {
+                        speed = speed + Number(v1);
+                        speedId.innerHTML = speed;
+                        distance += speed;
+                        distanceId.innerHTML = distance;
+                    }
+                    secondsId.innerHTML = seconds, seconds++
+                }, 1000);
+
+            }
+        }
+
+    })
+    stop.addEventListener('click', function () {
+        var v1 = userspeed.value;
+        var v2 = usertime.value;
+        clearInterval(startInterval);
+        if (isRunning == true && speedId.innerHTML != 0) {
+            isRunning = false;
+            stopInterval = setInterval(() => {
+                if (seconds % Number(v2) == 0) {
+                    speed -= Number(v1);
+                    if (speed == 0) {
+                        completelyStopped = true;
+                        clearInterval(stopInterval);
+                    }
+                    speedId.innerHTML = speed;
+                    distance += speed;
+                    distanceId.innerHTML = distance;
+                }
+                secondsId.innerHTML = seconds, seconds++
+            }, 1000);
+        }
+    })
+
+    function resetFn() {
+        location.reload();
+    }
+
+</script>
+
+</html>
